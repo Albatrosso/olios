@@ -1,7 +1,12 @@
 <template>
-	<h1 class="gui">
-		GUI
-	</h1>
+	<div>
+		<h1>
+			GUI
+		</h1>
+		<button class="btn">
+			View more
+		</button>
+	</div>
 </template>
 
 <script>
