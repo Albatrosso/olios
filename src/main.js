@@ -5,7 +5,12 @@ import router from './router';
 import store from './store';
 import 'normalize.css';
 
+//gui
+import OlInput from './components/gui/OlInput.vue';
+
 Vue.config.productionTip = false;
+
+Vue.component('OlInput', OlInput);
 
 new Vue({
 	router,

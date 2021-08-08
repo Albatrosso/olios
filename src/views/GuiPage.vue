@@ -6,6 +6,18 @@
 		<button class="btn">
 			View more
 		</button>
+		<div class="">
+			--
+		</div>
+		<ol-input
+			label="Label"
+			maxLength="2"
+			placeholder="Placeholder"
+		>
+			<template #icon>
+				ico
+			</template>
+		</ol-input>
 	</div>
 </template>
 
