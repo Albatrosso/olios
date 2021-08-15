@@ -1,14 +1,16 @@
 <template>
 	<div id="app">
+		<left-menu />
 		<router-view />
 	</div>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: 'Lato';
-  text-align: center;
-  color: #2c3e50;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 90px auto;
+  position: relative;
 }
-
 </style>

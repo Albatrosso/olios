@@ -79,10 +79,11 @@ export default class OlInput extends Vue {
     }
 
     &__input {
-        width: 100%;
+       width: 100%;
        padding: 10px 30px 10px 0;
        border: none;
        border-bottom: 1px solid $grey;
+       background-color: transparent;
     }
 
     &__input::placeholder {
