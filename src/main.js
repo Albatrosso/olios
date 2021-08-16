@@ -8,11 +8,13 @@ import 'normalize.css';
 //gui
 import OlInput from './components/gui/OlInput.vue';
 import LeftMenu from './components/gui/LeftMenu.vue';
+import RightMenu from './components/gui/RightMenu.vue';
 
 Vue.config.productionTip = false;
 
 Vue.component('OlInput', OlInput);
 Vue.component('LeftMenu', LeftMenu);
+Vue.component('RightMenu', RightMenu);
 
 new Vue({
 	router,

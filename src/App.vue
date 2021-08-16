@@ -2,6 +2,7 @@
 	<div id="app">
 		<left-menu />
 		<router-view />
+		<right-menu class="right-menu" />
 	</div>
 </template>
 
@@ -12,5 +13,10 @@
   display: grid;
   grid-template-columns: 90px auto;
   position: relative;
+
+  .right-menu {
+    position: absolute;
+    right: 0;
+  }
 }
 </style>
