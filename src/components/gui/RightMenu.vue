@@ -8,8 +8,16 @@
 			class="menu"
 			:class="{'menu--shown': isMenuShown}"
 		>
-			<div class="menu-wrapper">
-				categories
+			<div class="menu__wrapper">
+				<div
+					v-for="route in routes"
+					:key="route.name"
+					class="menu__item"
+					@click="changeRoute(route.path)"
+				>
+					{{ route.name }}
+					<div class="menu__icon" />
+				</div>
 			</div>
 			<div class="menu__link">
 				show all categories
@@ -24,19 +32,29 @@ import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 @Component({})
 
 export default class RightMenu extends Vue {
-	routs = [
+	routes = [
 		{
-			name: 'Home',
+			name: 'living room',
 			path: '/',
 			icon: 'home'
 		},
 		{ 
-			name: 'Cart',
+			name: 'office',
+			path: '/cart',
+			icon: 'cart'
+		},
+		{
+			name: 'for kids',
+			path: '/',
+			icon: 'home'
+		},
+		{ 
+			name: 'kitchen',
 			path: '/cart',
 			icon: 'cart'
 		},
 		{ 
-			name: 'Search',
+			name: 'accessories',
 			path: '/search',
 			icon: 'search'
 		}
@@ -58,14 +76,16 @@ export default class RightMenu extends Vue {
 .menu {
     position: relative;
     background-color: $white;
-    width: 250px;
-    align-items: flex-end;
+    width: 300px;
     text-transform: uppercase;
     height: 100vh;
     display: none;
+	padding: 50px 0;
+	box-shadow: -1px 1px 8px 0px rgba(34, 60, 80, 0.2);
 
     &--shown {
-        display: block;
+        display: grid;
+		align-items: flex-end;
     }
 
     &__button {
@@ -81,10 +101,31 @@ export default class RightMenu extends Vue {
         z-index: 5;
     }
 
+	&__wrapper {
+		align-self: center;
+	}
+
+	&__item {
+		padding: 25px 50px;
+		color: $dark-grey;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+	&__icon {
+		width: 60px;
+		height: 50px;
+		background-color: $main-color;
+		margin-left: 25px;
+	}
+
     &__link {
         position: relative;
         color: $main-color;
         cursor: pointer;
+		margin-bottom: 12px;
 
         &::after {
             content: "";

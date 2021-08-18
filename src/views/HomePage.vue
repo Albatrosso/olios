@@ -28,7 +28,7 @@ export default class HomePage extends Vue {
 	text-transform: uppercase;
 	background-image: url('../../public/img/mainfurniture.png');
 	background-size: cover;
-	background-position: left bottom;
+	background-position: bottom;
 
 	&__header {
 		position: relative;

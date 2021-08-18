@@ -3,13 +3,13 @@
 		<div class="menu__logo" />
 		<div>
 			<div
-				v-for="item in routs"
-				:key="item.path"
-				class="menu__item-wrapper"
-				@click="changeRoute(item.path)"
+				v-for="route in routes"
+				:key="route.path"
+				class="menu__wrapper"
+				@click="changeRoute(route.path)"
 			>
 				<div class="menu__item">
-					<span class="menu__name">{{ item.name }}</span>
+					<span class="menu__name">{{ route.name }}</span>
 				</div>
 			</div>
 		</div>
@@ -26,7 +26,7 @@ import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 @Component({})
 
 export default class LeftMenu extends Vue {
-	routs = [
+	routes = [
 		{
 			name: 'Home',
 			path: '/',
@@ -54,12 +54,14 @@ export default class LeftMenu extends Vue {
 
 <style lang="scss" scoped>
 .menu {
+	position: relative;
+	height: 100vh;
 	display: grid;
 	justify-items: center;
 	grid-template-rows: 100px auto 50px;
 	padding: 30px 0;
 	background-color: $white;
-	box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.1);
+	box-shadow: -1px 1px 8px 0px rgba(34, 60, 80, 0.2);
 
 	&__logo {
 		width: 35px;
@@ -69,10 +71,10 @@ export default class LeftMenu extends Vue {
 		background-size: cover;
 	}
 
-	&__item-wrapper {
+	&__wrapper {
 		padding: 25px;
 		&:hover .menu__name {
-			display: block;
+			display: inline-block;
 		}
 	}
 
@@ -89,8 +91,21 @@ export default class LeftMenu extends Vue {
 		position: absolute;
 		background-color: $white;
 		display: none;
+		transition: .4s;
 		left: 25px;
 		top: -15px;
+		animation-name: run;
+		animation-duration: .4s;
+	}
+
+	@-webkit-keyframes run {
+		0% {
+			opacity: 0;
+		}
+
+		100%{
+			opacity: 1;
+		}
 	}
 }
 </style>
