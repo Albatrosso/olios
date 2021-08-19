@@ -68,6 +68,12 @@ export default class RightMenu extends Vue {
 
 	changeRoute(route) {
 		this.$router.push(route).catch(e => {});
+		this.close();
+	}
+
+	@Emit('close')
+	close() {
+		this.isMenuShown = false;
 	}
 };
 </script>

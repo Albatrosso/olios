@@ -1,5 +1,8 @@
 <template>
-	<div class="home">
+	<div
+		class="home"
+		:style="selected.img"
+	>
 		<div class="home__header">
 			<div class="home__title">
 				Olios
@@ -11,6 +14,21 @@
 				View more
 			</button>
 		</div>
+		<div
+			class="home__advert"
+			:class="selected.title"
+		>
+			{{ selected.title }}
+		</div>
+		<div class="home__slider">
+			<span
+				v-for="slide in slider"
+				:key="slide.title"
+				class="dot"
+				:class="{'dot--active': slide.title == selected.title}"
+				@click="changeSelected(slide.title)"
+			/>
+		</div>
 	</div>
 </template>
 
@@ -20,15 +38,60 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({})
 
 export default class HomePage extends Vue {
+	slider = [
+		{
+			title: 'newest',
+			img: 'background-image: url(\'/img/newest.webp\');'
+		},
+		{
+			title: 'coziest',
+			img: 'background-image: url(\'/img/coziest.webp\');'
+		},
+		{
+			title: 'stylish',
+			img: 'background-image: url(\'/img/stylish.webp\');'
+		},
+		{
+			title: 'just best',
+			img: 'background-image: url(\'/img/best.webp\');'
+		}
+	];
+
+	selected = this.slider[0];
+	interval = '';
+
+	created() {
+		this.autoChangeSelected();
+	}
+
+	beforeDestroy() {
+		clearInterval(this.interval);
+	}
+
+	changeSelected(title) {
+		this.selected = this.slider.find(slide => slide.title === title);
+	}
+
+	autoChangeSelected() {
+		let index = 0;
+
+		this.interval = setInterval(() => {
+			index++;
+			if (index === 4) {
+				index = 0;
+			}
+			this.selected = this.slider[index];
+		}, 5000);
+	}
 };
 </script>
 
 <style lang="scss" scoped>
 .home {
 	text-transform: uppercase;
-	background-image: url('../../public/img/mainfurniture.png');
 	background-size: cover;
 	background-position: bottom;
+	position: relative;
 
 	&__header {
 		position: relative;
@@ -46,6 +109,22 @@ export default class HomePage extends Vue {
 		letter-spacing: 1px;
 		font-weight: 200;
 		margin: 20px 0 30px;
+	}
+
+	&__advert {
+		font-size: 320px;
+		font-weight: 800;
+		margin-top: -170px;
+	}
+
+	&__slider {
+		width: 150px;
+		display: flex;
+		justify-content: space-between;
+		position: absolute;
+		bottom: 65px;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }
 </style>
