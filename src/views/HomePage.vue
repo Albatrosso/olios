@@ -70,6 +70,8 @@ export default class HomePage extends Vue {
 
 	changeSelected(title) {
 		this.selected = this.slider.find(slide => slide.title === title);
+		clearInterval(this.interval);
+		this.autoChangeSelected();
 	}
 
 	autoChangeSelected() {
@@ -77,7 +79,7 @@ export default class HomePage extends Vue {
 
 		this.interval = setInterval(() => {
 			index++;
-			if (index === 4) {
+			if (index === this.slider.length) {
 				index = 0;
 			}
 			this.selected = this.slider[index];

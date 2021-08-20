@@ -8,14 +8,17 @@
 				class="menu__wrapper"
 				@click="changeRoute(route.path)"
 			>
-				<div class="menu__item">
+				<div
+					class="menu__item"
+					:style="route.url"
+				>
 					<span class="menu__name">{{ route.name }}</span>
 				</div>
 			</div>
 		</div>
 		<div
 			class="menu__item"
-			:style="{ 'background-color': exitUrl }"
+			:style="exitUrl"
 		/>
 	</div>
 </template>
@@ -30,23 +33,26 @@ export default class LeftMenu extends Vue {
 		{
 			name: 'Home',
 			path: '/',
-			icon: 'home'
+			url: 'background-image: url(\'/img/icons/home.png\');'
 		},
 		{ 
 			name: 'Cart',
 			path: '/cart',
-			icon: 'cart'
+			url: 'background-image: url(\'/img/icons/cart.png\');'
 		},
 		{ 
 			name: 'Search',
-			path: '/search',
-			icon: 'search'
+			path: 'search',
+			url: 'background-image: url(\'/img/icons/search.png\');'
 		}
 	];
 
-	exitUrl = 'background-image: url(\'../../../public/img/icons/exit.png\');';
+	exitUrl = 'background-image: url(\'/img/icons/exit.png\');';
 
 	changeRoute(route) {
+		if (route === 'search') {
+			return;
+		}
 		this.$router.push(route).catch(e => {});
 	}
 };
@@ -83,7 +89,9 @@ export default class LeftMenu extends Vue {
 		height: 25px;
 		cursor: pointer;
 		position: relative;
-		background-color: $main-color;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: bottom;
 	}
 
 	&__name {

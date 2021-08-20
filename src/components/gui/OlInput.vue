@@ -1,11 +1,5 @@
 <template>
 	<div class="field">
-		<label
-			v-if="label"
-			class="field__label"
-		>
-			{{ label }}
-		</label>
 		<div class="field__wrapper">
 			<input
 				ref="input"
@@ -22,6 +16,12 @@
 				<slot name="icon" />
 			</span>
 		</div>
+		<label
+			v-if="label"
+			class="field__label"
+		>
+			{{ label }}
+		</label>
 	</div>
 </template>
 
@@ -33,8 +33,8 @@ import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 export default class OlInput extends Vue {
     @Prop({ default: '' }) value;
     @Prop({ type: String, default: 'text' }) type;
-    @Prop({ type: String, default: '' }) placeholder;
-    @Prop({ type: String, default: '' }) label;
+    @Prop({ type: String, default: 'Red seat' }) placeholder;
+    @Prop({ type: String, default: 'Type product that you are looking for' }) label;
 
     @Emit('input')
     onInput(event = {}) {
@@ -66,12 +66,8 @@ export default class OlInput extends Vue {
     position: relative;
 
     &__label {
-        font-size: 14px;
+        font-size: 16px;
         color: $grey;
-        position: absolute;
-        bottom: -22px;
-        left: 0;
-        text-transform: lowercase;
     }
 
     &__wrapper {
@@ -88,14 +84,19 @@ export default class OlInput extends Vue {
 
     &__input::placeholder {
        color: $grey;
+       text-transform: uppercase;
     }
 
     &__icon {
         position: absolute;
-        right: -30px;
+        right: 0;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
+
+        &:hover {
+            opacity: .5;
+        }
     }
 }
 </style>

@@ -2,6 +2,7 @@
 	<div>
 		<div
 			class="menu__button"
+			:class="{'menu__button--shown': isMenuShown}"
 			@click="showMenu"
 		/>
 		<div
@@ -16,7 +17,10 @@
 					@click="changeRoute(route.path)"
 				>
 					{{ route.name }}
-					<div class="menu__icon" />
+					<div
+						class="menu__icon"
+						:style="route.url"
+					/>
 				</div>
 			</div>
 			<div class="menu__link">
@@ -36,27 +40,27 @@ export default class RightMenu extends Vue {
 		{
 			name: 'living room',
 			path: '/',
-			icon: 'home'
+			url: 'background-image: url(\'/img/icons/living.png\');'
 		},
 		{ 
 			name: 'office',
 			path: '/cart',
-			icon: 'cart'
+			url: 'background-image: url(\'/img/icons/office.png\');'
 		},
 		{
 			name: 'for kids',
 			path: '/',
-			icon: 'home'
+			url: 'background-image: url(\'/img/icons/kids.png\');'
 		},
 		{ 
 			name: 'kitchen',
 			path: '/cart',
-			icon: 'cart'
+			url: 'background-image: url(\'/img/icons/kitchen.png\');'
 		},
 		{ 
 			name: 'accessories',
 			path: '/search',
-			icon: 'search'
+			url: 'background-image: url(\'/img/icons/accessories.png\');'
 		}
 	];
 
@@ -100,11 +104,18 @@ export default class RightMenu extends Vue {
         border-radius: 50%;
         background-color: $white;
         box-shadow: -1px 1px 8px 0px rgba(34, 60, 80, 0.2);
+		background-image: url('../../../public/img/icons/menu.png');
+		background-repeat: no-repeat;
+		background-position: center;
         cursor: pointer;
         position: absolute;
         right: 40px;
         top: 50px;
         z-index: 5;
+
+		&--shown {
+        	background-image: url('../../../public/img/icons/cross.png');
+    	}
     }
 
 	&__wrapper {
@@ -118,13 +129,17 @@ export default class RightMenu extends Vue {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+
+		&:hover {
+			color: $main-color;
+		}
 	}
 
 	&__icon {
 		width: 60px;
 		height: 50px;
-		background-color: $main-color;
 		margin-left: 25px;
+		background-size: cover;
 	}
 
     &__link {
@@ -132,6 +147,10 @@ export default class RightMenu extends Vue {
         color: $main-color;
         cursor: pointer;
 		margin-bottom: 12px;
+
+		&:hover {
+			opacity: .6;
+		}
 
         &::after {
             content: "";
