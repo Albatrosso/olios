@@ -2,11 +2,11 @@
 	<div class="search">
 		<div class="container">
 			<div class="search__wrapper">
-				<ol-input class="search__input">
-					<template #icon>
-						<div class="search__input-icon" />
-					</template>
-				</ol-input>
+				<ol-input
+					v-model="term"
+					class="search__input"
+					clearable
+				/>
 			</div>
 			<div class="search__wrapper">
 				<div
@@ -35,6 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 export default class HomePage extends Vue {
 	result = 2;
+	term = '';
 	
 	items = [
 		{ 
@@ -51,7 +52,7 @@ export default class HomePage extends Vue {
 
 <style lang="scss" scoped>
 .search {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.85);
 
 	.container {
 		display: grid;

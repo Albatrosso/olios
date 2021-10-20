@@ -2,20 +2,19 @@
 	<div class="field">
 		<div class="field__wrapper">
 			<input
-				ref="input"
+				v-model="innerValue"
 				:value="value"
 				:type="type"
 				:placeholder="placeholder"
 				class="field__input"
 				@input="onInput($event)"
 			/>
-			<span
-				class="field__icon"
-				@click="onInput()"
-			>
-				<slot name="icon" />
-			</span>
 		</div>
+		<span
+			v-if="clearable && value"
+			class="field__icon"
+			@click="onClear"
+		/>
 		<label
 			v-if="label"
 			class="field__label"
@@ -34,7 +33,16 @@ export default class OlInput extends Vue {
     @Prop({ default: '' }) value;
     @Prop({ type: String, default: 'text' }) type;
     @Prop({ type: String, default: 'Red seat' }) placeholder;
+    @Prop({ type: Boolean, default: false }) clearable;
     @Prop({ type: String, default: 'Type product that you are looking for' }) label;
+
+    get innerValue() {
+    	return this.value;
+    }
+
+    set innerValue(value) {    
+    	this.$emit('input', value);
+    }
 
     @Emit('input')
     onInput(event = {}) {
@@ -52,7 +60,9 @@ export default class OlInput extends Vue {
     }
 
     @Emit('clear')
-    onClear() {}
+    onClear() {
+    	this.innerValue = '';
+    }
 
     @Emit('clickHandler')
     onClick() {}
@@ -88,11 +98,14 @@ export default class OlInput extends Vue {
     }
 
     &__icon {
+        width: 25px;
+        height: 25px;
         position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        right: 5px;
+        bottom: 55px;
         cursor: pointer;
+        background: url('../../../public/img/icons/crossgrey.png') center;
+        background-size: cover;
 
         &:hover {
             opacity: .5;

@@ -10,7 +10,10 @@
 			<div class="home__subtitle">
 				Newest furniture shop template
 			</div>
-			<button class="btn">
+			<button
+				class="btn"
+				@click="toCatalogPage"
+			>
 				View more
 			</button>
 		</div>
@@ -84,6 +87,11 @@ export default class HomePage extends Vue {
 			}
 			this.selected = this.slider[index];
 		}, 5000);
+	}
+
+	toCatalogPage() {
+		this.$router.push('/catalog').catch(e => {});
+		this.close();
 	}
 };
 </script>
