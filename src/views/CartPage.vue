@@ -2,7 +2,7 @@
 	<div class="cart container">
 		<div class="cart__main">
 			<div
-				v-if="!items.length"
+				v-if="!products.length"
 				class="cart__placeholder"
 			>
 				Your cart is empty :( <br /> 
@@ -13,10 +13,16 @@
 			<div
 				v-else
 				class="cart__items"
-			/>
+			>
+				<cart-item
+					v-for="product in products"
+					:key="product.id"
+					:product="product"
+				/>
+			</div>
 			<div class="cart__footer">
 				<div>
-					Items: <span class="cart__price">{{ items.lenght || '0' }}</span>
+					Items: <span class="cart__price">{{ products.lenght || '0' }}</span>
 				</div>
 				<div class="cart__total">
 					Total: <span
@@ -43,7 +49,19 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 
 export default class CartPage extends Vue {
-    items = [];
+    products = [
+    	{
+    		id: '1', 
+    		name: 'red seat with pillows', 
+    		price: {
+    			total: 50, 
+    			original: 55, 
+    			promocode: 5
+    		}, 
+    		amount: 2, 
+    		photo: 'background-image: url(\'/img/seat.png\');'
+    	}
+    ];
     total = '';
     promo = '';
 
@@ -54,7 +72,7 @@ export default class CartPage extends Vue {
 <style lang="scss" scoped>
 .cart {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 290px;
     grid-column-gap: 30px;
 	position: relative;
 

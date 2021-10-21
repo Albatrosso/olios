@@ -63,9 +63,6 @@ export default class OlInput extends Vue {
     onClear() {
     	this.innerValue = '';
     }
-
-    @Emit('clickHandler')
-    onClick() {}
 };
 </script>
 
