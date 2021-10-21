@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import NotFoundPage from '../views/NotFoundPage.vue';
 import GuiPage from '../views/GuiPage.vue';
+import CartPage from '../views/CartPage.vue';
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
 		path: '/gui',
 		name: 'gui',
 		component: GuiPage
+	},
+	{
+		path: '/cart',
+		name: 'Cart',
+		component: CartPage
 	}
 ];
 

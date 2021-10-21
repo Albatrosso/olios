@@ -4,6 +4,8 @@
 			<div class="search__wrapper">
 				<ol-input
 					v-model="term"
+					:label="'Type product that you are looking for'"
+					:placeholder="'Red seat'"
 					class="search__input"
 					clearable
 				/>

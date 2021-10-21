@@ -32,9 +32,9 @@ import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
 export default class OlInput extends Vue {
     @Prop({ default: '' }) value;
     @Prop({ type: String, default: 'text' }) type;
-    @Prop({ type: String, default: 'Red seat' }) placeholder;
+    @Prop({ type: String, default: '' }) placeholder;
     @Prop({ type: Boolean, default: false }) clearable;
-    @Prop({ type: String, default: 'Type product that you are looking for' }) label;
+    @Prop({ type: String, default: '' }) label;
 
     get innerValue() {
     	return this.value;
