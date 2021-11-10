@@ -54,7 +54,7 @@ export default class HomePage extends Vue {
 
 <style lang="scss" scoped>
 .search {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(235, 235, 235, 0.95);
 
 	.container {
 		display: grid;

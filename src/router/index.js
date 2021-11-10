@@ -4,6 +4,7 @@ import HomePage from '../views/HomePage.vue';
 import NotFoundPage from '../views/NotFoundPage.vue';
 import GuiPage from '../views/GuiPage.vue';
 import CartPage from '../views/CartPage.vue';
+import CatalogPage from '../views/CatalogPage.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
 		path: '/cart',
 		name: 'Cart',
 		component: CartPage
+	},
+	{
+		path: '/catalog',
+		name: 'Catalog',
+		component: CatalogPage
 	}
 ];
 

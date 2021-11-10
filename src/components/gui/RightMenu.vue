@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+import { Component, Vue, Emit } from 'vue-property-decorator';
 
 @Component({})
 
@@ -39,27 +39,27 @@ export default class RightMenu extends Vue {
 	routes = [
 		{
 			name: 'living room',
-			path: '/',
+			path: '/catalog',
 			url: 'background-image: url(\'/img/icons/living.png\');'
 		},
 		{ 
 			name: 'office',
-			path: '/cart',
+			path: '/catalog',
 			url: 'background-image: url(\'/img/icons/office.png\');'
 		},
 		{
 			name: 'for kids',
-			path: '/',
+			path: '/catalog',
 			url: 'background-image: url(\'/img/icons/kids.png\');'
 		},
 		{ 
 			name: 'kitchen',
-			path: '/cart',
+			path: '/catalog',
 			url: 'background-image: url(\'/img/icons/kitchen.png\');'
 		},
 		{ 
 			name: 'accessories',
-			path: '/search',
+			path: '/catalog',
 			url: 'background-image: url(\'/img/icons/accessories.png\');'
 		}
 	];
