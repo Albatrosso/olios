@@ -31,7 +31,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="catalog__footer">
+			<div
+				v-if="isMoreButtonShown"
+				class="catalog__footer"
+				@click="showProducts"
+			>
 				Show more products
 			</div>
 		</div>
@@ -81,6 +85,13 @@ export default class CatalogPage extends Vue {
     		photo: 'background-image: url(\'/img/seatdark.png\');'
     	}
     ];
+
+    isMoreButtonShown = true;
+
+    showProducts() {
+    	this.products = [...this.products, ...this.products.reverse()];
+    	this.isMoreButtonShown = false;
+    }
 };
 </script>
 
@@ -135,7 +146,8 @@ export default class CatalogPage extends Vue {
 
     .item {
         background: $white;
-        padding: 25px;
+        padding: 24px;
+        border: 1px solid $white;
         text-align: left;
         cursor: pointer;
 
@@ -197,6 +209,10 @@ export default class CatalogPage extends Vue {
             & .item__desc, .item__price {
                 font-size: 22px;
             }
+        }
+
+        &:hover {
+            border: 1px solid $main-color;
         }
     }
 }
