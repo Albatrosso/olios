@@ -19,6 +19,7 @@ import SearchModal from './components/SearchModal.vue';
 import PromocodeWidget from './components/cart/PromocodeWidget.vue';
 import CheckoutWidget from './components/cart/CheckoutWidget.vue';
 import CartItem from './components/cart/CartItem.vue';
+import CatalogItem from './components/CatalogItem.vue';
 
 Vue.config.productionTip = false;
 
@@ -32,6 +33,8 @@ Vue.component('SearchModal', SearchModal);
 Vue.component('PromocodeWidget', PromocodeWidget);
 Vue.component('CheckoutWidget', CheckoutWidget);
 Vue.component('CartItem', CartItem);
+//catalog
+Vue.component('CatalogItem', CatalogItem);
 
 new Vue({
 	router,

@@ -39,6 +39,7 @@
 				Show more products
 			</div>
 		</div>
+		<catalog-item class="catalog__item" />
 	</div>
 </template>
 
@@ -142,6 +143,12 @@ export default class CatalogPage extends Vue {
         grid-template-columns: repeat(4, 1fr);
         grid-auto-flow: dense;
         margin-bottom: 50px;
+    }
+
+    &__item {
+        position: absolute;
+        top: 0;
+        left: 75px;
     }
 
     .item {
